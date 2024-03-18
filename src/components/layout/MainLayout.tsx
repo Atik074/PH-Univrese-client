@@ -49,7 +49,7 @@ const MainLayout = () => {
             alignItems:"center"
           }}
         >
-          <h1 style={{ height: "20px" }}>PH Universe</h1>
+          <h1>PH Universe</h1>
         </div>
         <Menu
           theme="dark"
