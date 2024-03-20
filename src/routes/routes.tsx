@@ -2,8 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import AboutUs from "../pages/AboutUs";
 import ContactsUs from "../pages/ContactsUs";
-import AdminDasboad from "../pages/admin/AdminDasboad";
-import CreateStudent from "../pages/student/CreateStudent";
+import { adminPaths } from "./admin.routes";
 
 
 const router = createBrowserRouter([
@@ -19,31 +18,32 @@ const router = createBrowserRouter([
                 path:'contact' , // absolute path
                 element:<ContactsUs/>
             }
-
-
         ]
-        
-    
     },
+    
     {
         path: '/admin', // relative path
         element:<App/>,
-        children:[
-            {
-                 index:true, 
-                element:<AdminDasboad/>
-            },
-            {
-                path:'dashboard' ,
-                element:<AdminDasboad/>
-            },
-            {
-                path:'create-student' , 
-                element:<CreateStudent/>
-            },
+        children:adminPaths
+    },
+    {
+      path:'/faculty' ,
+      element:<App/> ,
+      children:adminPaths  
+    },
+    {
+      path:'/student' ,
+      element:<App/> ,
+      children:adminPaths  
+    },
 
-        ]  
-    
+    {
+        path:'/login' ,
+        element:<p>hi login</p>
+    },
+    {
+        path:'/register',
+        element:<p>Hi register page</p>
     }
 ])
 
