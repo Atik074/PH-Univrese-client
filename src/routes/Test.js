@@ -1,7 +1,7 @@
 export const adminPaths2 = [
     {
       name: 'Dasboard',
-      path:'/admin/dashboard' ,
+      path:'dashboard' ,
       element:'CREATE_DASHBOARD'
     },
   
@@ -10,17 +10,17 @@ export const adminPaths2 = [
       children:[
         {
           name:'Create Admin' ,
-          path:'/admin/create-admin' ,
+          path:'create-admin' ,
           element:'CREATE_ADMIN'
         } ,
         {
           name:'Create faculty' ,
-          path:'/admin/create-faculty' ,
+          path:'create-faculty' ,
           element:'CREATE_FACULTY'
         },
         {
           name:'Create student' ,
-          path:'/admin/create-student' ,
+          path:'create-student' ,
           element:'CREATE_STUDENT'
         }
       ]
@@ -30,10 +30,30 @@ export const adminPaths2 = [
 
 
 const newArray = adminPaths2.reduce((acc ,item)=>{
+       
+  if(item.path && item.element){
+    acc.push({
+      key: item.path ,
+      label: "NavLink"
+    })
+   
+  }
 
-    acc.push(item)
+  if(item.children){
+        item.children.forEach((child)=>{
+          acc.push({
+            key:child.path ,
+            label:child.element ,
+            children: item.children.map((child)=>({
+                key:child.name ,
+                element: "NavLink"
+            }))
+          })
+        })
+  }
+
     return acc ;
 
 } , [])
 
-console.log(newArray)
+console.log(JSON.stringify(newArray))
