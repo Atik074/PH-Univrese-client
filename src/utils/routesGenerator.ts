@@ -26,7 +26,7 @@ const  routeGenerator =(items:TUserPath[])=>{
         if(item.children){
               item.children.forEach((child)=>{
                 acc.push({
-                  path:child.path ,
+                  path:child.path! ,
                   element:child.element
                 })
               })
@@ -40,6 +40,5 @@ const  routeGenerator =(items:TUserPath[])=>{
       
       
 }
-
 
 export default routeGenerator ;
